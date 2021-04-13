@@ -6,7 +6,7 @@ package dev.jmarkovic.saunasolution
  */
 interface Actor {
 
-  fun traverse(gameMap: GameMap): Inventory
+  fun traverse(gameMap: GameMap, delayEachStepMs: Long = 0): Inventory
 
 }
 
@@ -18,7 +18,7 @@ class ActorController(
   private lateinit var currentTile: CurrentTile
   private var inventory: Inventory = emptyInventory()
 
-  override fun traverse(gameMap: GameMap): Inventory {
+  override fun traverse(gameMap: GameMap, delayEachStepMs: Long): Inventory {
     currentTile = startTileFinder.findStartingTile(gameMap)
     // collect the starting tile
     inventory = inventory.addTile(currentTile)
@@ -33,6 +33,8 @@ class ActorController(
       }
 
       nextTile = stepper.nextStep(currentTile, gameMap)
+
+      if (delayEachStepMs > 0) Thread.sleep(delayEachStepMs)
     } while (nextTile != currentTile)
 
     return inventory

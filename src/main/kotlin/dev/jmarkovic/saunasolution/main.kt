@@ -1,7 +1,12 @@
+@file:JvmName("Main")
+
 package dev.jmarkovic.saunasolution
 
-fun main(args: Array<String>) {
+fun main() {
 
+  // When pasting, make sure the map is properly aligned. Do not worry
+  // about the extra spacing on the left side of the map - the `trimIndent`
+  // function removes it.
   val input = """
   @---A---+
           |
@@ -11,7 +16,7 @@ fun main(args: Array<String>) {
   """.trimIndent()
 
   println("Playing a map:")
-  println(input)
+  println(input.replace(' ', '░'))
 
   val inventory = play(input)
 

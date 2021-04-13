@@ -14,3 +14,4 @@ build/
 .idea/*
 !.idea/codeStyles/
 !.idea/inspectionProfiles/
+!.idea/runConfigurations/

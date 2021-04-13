@@ -22,6 +22,10 @@ tasks.test {
     useTestNG()
 }
 
+application {
+    mainClass.set("dev.jmarkovic.saunasolution.Main")
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
